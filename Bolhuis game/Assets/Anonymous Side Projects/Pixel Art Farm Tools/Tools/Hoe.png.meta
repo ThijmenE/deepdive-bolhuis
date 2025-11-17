@@ -1,13 +1,12 @@
 fileFormatVersion: 2
-guid: 030e097729173c4409167d517f8d0fd2
+guid: 619dbf3115135f2419e70c2bc998c4b5
 AssetOrigin:
   serializedVersion: 1
-  productId: 271287
-  packageName: Pixel Art Spruce Tree Pack - SNOW EDITION - Animated
-  packageVersion: 1.1
-  assetPath: Assets/karsiori/Spruce Tree Pack - Snow/Sprites/Pine/Snow - High/Green/Sprites/Pine 
-    - GREEN  - High .png
-  uploadId: 670276
+  productId: 266351
+  packageName: Pixel Art Farm Tools
+  packageVersion: 1.0
+  assetPath: Assets/Anonymous Side Projects/Pixel Art Farm Tools/Tools/Hoe.png
+  uploadId: 615717
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -90,19 +89,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
