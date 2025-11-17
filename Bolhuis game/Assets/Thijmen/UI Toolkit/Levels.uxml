@@ -1,0 +1,11 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=d63c6a6aa1f950749ab7f3ca4adfa98c&amp;type=3#MainMenuStyle" />
+    <engine:VisualElement name="Wrapper" style="flex-grow: 1;">
+        <engine:Button text="Level 1" name="Level1" class="button" style="top: 25%;" />
+        <engine:Button text="Level 2" name="Level2" class="button" style="top: 40%; background-image: url(&quot;project://database/Assets/UI/UI%20buttons/Sliced%20PNG%C2%B4s/LongGreenButtonDown.png?fileID=2800000&amp;guid=c0e7ce1c250443c439073d87971e0343&amp;type=3#LongGreenButtonDown&quot;);" />
+        <engine:Button text="Level 3" name="Level3" class="button" style="top: 55%;" />
+        <engine:Button text="Level 4" name="Level4" class="button" style="top: 70%;" />
+        <engine:Button text="Level 5" name="Level5" class="button" style="top: 85%;" />
+        <engine:Button name="LevelBackButton" class="button" style="top: 10%; width: 124px; left: auto; background-image: url(&quot;project://database/Assets/UI/UI%20buttons/Sliced%20PNG%C2%B4s/SmallGreenArrowButtonDown.png?fileID=2800000&amp;guid=4d1015ae55c616f40b6d78b96c6b17aa&amp;type=3#SmallGreenArrowButtonDown&quot;);" />
+    </engine:VisualElement>
+</engine:UXML>
