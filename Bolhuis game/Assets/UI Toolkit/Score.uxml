@@ -1,6 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=d63c6a6aa1f950749ab7f3ca4adfa98c&amp;type=3#MainMenuStyle" />
     <engine:VisualElement name="Wrapper" style="flex-grow: 1;">
-        <engine:Label text="0" name="ScoreLabel" class="label header" />
+        <engine:Label text="Score: 0" name="ScoreLabel" class="label header" style="right: auto; top: auto; font-size: 100px; left: 0%; position: absolute;" />
+        <engine:Label text="Munten: 0" name="MuntenLabel" class="label header" style="top: 0%; right: 0%; width: auto; -unity-background-image-tint-color: rgb(255, 255, 255); font-size: 100px; position: relative; flex-direction: row-reverse; white-space: nowrap; -unity-text-align: upper-center;" />
     </engine:VisualElement>
 </engine:UXML>
