@@ -5,9 +5,14 @@ public class ScoreManager : MonoBehaviour
 {
     private Label scoreLabel;
     private Label muntenLabel;
+    private Button schepButton;
 
     private float score = 0;
     private float munten = 0;
+
+    private float schep = 75;
+
+    private Button _SchepButton;
 
     private void Start()
     {
@@ -22,6 +27,27 @@ public class ScoreManager : MonoBehaviour
         UpdateMunten();
     }
 
+    private void Awake()
+    {
+        var root = GetComponent<UIDocument>().rootVisualElement;
+        _SchepButton = root.Q<Button>("SchepButton");
+        _SchepButton.clicked += SchepButtonClicked;
+    }
+
+    private void SchepButtonClicked()
+    {
+
+        if (munten >= 75)
+        {
+            munten -= schep;
+            UpdateMunten();
+            Debug.Log("Schep is gekocht!");
+        }
+        else
+        {
+            Debug.Log("Niet genoeg munten in de tas!");
+        }
+    }
     private void OnEnable()
     {
         Boom.OnScoreAdd += ScoreUpdater;
@@ -45,7 +71,6 @@ public class ScoreManager : MonoBehaviour
         munten += value;
         UpdateMunten();
     }
-
     private void UpdateScore()
     {
         if (scoreLabel != null)

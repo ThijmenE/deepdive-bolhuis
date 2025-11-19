@@ -116,7 +116,7 @@ public class MenuController : MonoBehaviour
         _GeluidButton.style.display = DisplayStyle.Flex;
     }
 
-    private void SpelenButtonClicked() => SceneManager.LoadScene("MainGame");
+    private void SpelenButtonClicked() => SceneManager.LoadScene("Boom test");
     private void UitlegButtonClicked() => ShowPanel(_UitlegPanel, _UitlegPanelButtons);
     private void GeluidButtonClicked() => ShowPanel(_GeluidPanel, _GeluidPanelButtons);
 
