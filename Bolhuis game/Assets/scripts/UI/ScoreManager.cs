@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private Button mestButton;
 
     private float score = 0f;
-    private float munten = 50f;
+    private float munten = 75f;
     private float mest = 10;
     [SerializeField] private float gieterWaarde = 75f;
 

@@ -4,7 +4,7 @@
         <engine:Label text="Score: 0" name="ScoreLabel" class="label header" style="right: auto; top: auto; font-size: 100px; left: 0%; position: absolute;" />
         <engine:Label text="Munten: 0" name="MuntenLabel" class="label header" style="top: 0%; right: 0%; width: auto; -unity-background-image-tint-color: rgb(255, 255, 255); font-size: 100px; position: relative; flex-direction: row-reverse; white-space: nowrap; -unity-text-align: upper-center;" />
         <engine:Button text="Button" name="GieterButton" class="button" style="top: 15%; left: 75%;" />
-        <engine:Button text="score/munten" name="ButtonCheck" style="align-self: center; top: 60%; position: absolute; bottom: 30%; width: 25%; background-position-y: bottom 0; right: 5%;" />
+        <engine:Button text="Verkoop" name="ButtonCheck" style="align-self: center; top: 60%; position: absolute; bottom: 30%; width: 25%; background-position-y: bottom 0; right: 5%;" />
         <engine:Button text="Plant" name="ButtonPlanted" style="align-self: center; top: 60%; position: absolute; bottom: 30%; width: 25%; background-position-y: bottom 0; right: auto; left: 5%;" />
         <engine:Button text="Mest" name="MestButton" class="button" style="top: 30%; left: 75%;" />
     </engine:VisualElement>
