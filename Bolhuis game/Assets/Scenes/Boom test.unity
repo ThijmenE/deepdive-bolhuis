@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 820375739}
   - component: {fileID: 820375738}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Tree Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoomTimer
   animator: {fileID: 72366133}
+  schep: 1
 --- !u!114 &820375739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +345,7 @@ GameObject:
   - component: {fileID: 936289615}
   - component: {fileID: 936289617}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff75074651d14484c979f8640f46f505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  remainingTime: 300
+  remainingTime: 301
 --- !u!1 &977648310
 GameObject:
   m_ObjectHideFlags: 0
