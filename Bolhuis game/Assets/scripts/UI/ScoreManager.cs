@@ -8,14 +8,18 @@ public class GameManager : MonoBehaviour
     private Label muntenLabel;
     private Label timerLabel;
     private Button gieterButton;
+    private Button mestButton;
 
     private float score = 0f;
     private float munten = 50f;
+    private float mest = 10;
     [SerializeField] private float gieterWaarde = 75f;
 
     private float elapsedTime = 0f;
     public Animator animator;
     private bool isGieterActive = false;
+
+    public float OnMestChanged { get; private set; }
 
     public static event Action<bool> gieter;
     public static void SetGieter(bool value) => gieter?.Invoke(value);
@@ -33,6 +37,7 @@ public class GameManager : MonoBehaviour
             muntenLabel = root.Q<Label>("MuntenLabel");
             timerLabel = root.Q<Label>("boom-timer");
             gieterButton = root.Q<Button>("GieterButton");
+            mestButton = root.Q<Button>("MestButton");
         }
         else
         {
@@ -45,6 +50,13 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("GieterButton not found in UIDocument.");
 
         gieter += OnGieterChanged;
+
+        if (mestButton != null)
+            mestButton.clicked += OnMestButtonClicked;
+        else
+            Debug.LogWarning("GieterButton not found in UIDocument.");
+
+       mest += OnMestChanged;
     }
 
     private void Start()
@@ -97,6 +109,21 @@ public class GameManager : MonoBehaviour
             SetGieter(true);
 
             Debug.Log("Gieter is gekocht!");
+        }
+        else
+        {
+            Debug.Log("Niet genoeg munten in de tas! sukkel");
+        }
+    }
+
+        private void OnMestButtonClicked()
+    {
+        if (munten >= mest)
+        {
+            munten -= mest;
+            UpdateMuntenLabel();
+
+            Debug.Log("Mest is gekocht!");
         }
         else
         {

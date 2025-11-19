@@ -6,5 +6,6 @@
         <engine:Button text="Button" name="GieterButton" class="button" style="top: 15%; left: 75%;" />
         <engine:Button text="score/munten" name="ButtonCheck" style="align-self: center; top: 60%; position: absolute; bottom: 30%; width: 25%; background-position-y: bottom 0; right: 5%;" />
         <engine:Button text="Plant" name="ButtonPlanted" style="align-self: center; top: 60%; position: absolute; bottom: 30%; width: 25%; background-position-y: bottom 0; right: auto; left: 5%;" />
+        <engine:Button text="Mest" name="MestButton" class="button" style="top: 30%; left: 75%;" />
     </engine:VisualElement>
 </engine:UXML>
