@@ -169,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33249dc4db5d4f544a8de4455ecc94c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
+  gieterWaarde: 75
+  animator: {fileID: 0}
 --- !u!114 &771972204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820375740}
   - component: {fileID: 820375739}
-  - component: {fileID: 820375738}
+  - component: {fileID: 820375741}
   m_Layer: 0
   m_Name: Tree Timer
   m_TagString: Untagged
@@ -210,20 +212,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &820375738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820375737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d59e3d17a00494fb37652568c7127a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoomTimer
-  animator: {fileID: 72366133}
-  schep: 1
 --- !u!114 &820375739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
   m_PanelSettings: {fileID: 11400000, guid: 7115b5cd49b19ea4d9562893804ab813, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 9e903e028993a3d498ab319412173fec, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 026d5d3e6b64ecb42a36a68288a7f624, type: 3}
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
@@ -262,6 +250,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &820375741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820375737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33249dc4db5d4f544a8de4455ecc94c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombinedGameManager
+  gieterWaarde: 75
+  animator: {fileID: 72366133}
 --- !u!1 &914070282
 GameObject:
   m_ObjectHideFlags: 0
