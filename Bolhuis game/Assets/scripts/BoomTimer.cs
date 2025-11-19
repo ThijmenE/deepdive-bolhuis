@@ -5,6 +5,7 @@ public class BoomTimer : MonoBehaviour
 {
     private float elapsedTime;
     private Label timerLabel;
+    public Animator animator;
 
     void Awake()
     {
@@ -28,5 +29,7 @@ public class BoomTimer : MonoBehaviour
 
         if (timerLabel != null)
             timerLabel.text = $"{minutes:00}:{seconds:00}";
+
+        animator.SetFloat("Timer", elapsedTime);
     }
 }

@@ -12,23 +12,28 @@ public class Boom : MonoBehaviour
     [SerializeField] private float muntenValue = 25;
 
     private Button _ButtonCheck;
-    private bool collected = false;
+    
+    private Button _ButtonPlanted;
 
     private void Awake()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
         _ButtonCheck = root.Q<Button>("ButtonCheck");
-        _ButtonCheck.clicked += ButtonClicked;
+        _ButtonCheck.clicked += ButtonCheckClicked;
+        _ButtonPlanted = root.Q<Button>("ButtonPlanted");
+        _ButtonPlanted.clicked += ButtonPlantClicked;
     }
 
-    public void ButtonClicked()
+    public void ButtonCheckClicked()
     {
-        if (collected) return;
-        collected = true;
-
         OnScoreAdd?.Invoke(scoreValue);
         OnMuntenAdd?.Invoke(muntenValue);
 
-        collected = false;
+        animator.SetTrigger("Sold");
+    }
+
+    public void ButtonPlantClicked()
+    {
+        animator.SetTrigger("Planted");
     }
 }
