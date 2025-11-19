@@ -6,20 +6,19 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     [Header("Templates")]
-    [SerializeField] private VisualTreeAsset _levelsButtonTemplate;
-    [SerializeField] private VisualTreeAsset _settingsPanelTemplate;
+    [SerializeField] private VisualTreeAsset _UitlegButtonTemplate;
+    [SerializeField] private VisualTreeAsset _GeluidPanelTemplate;
 
     private VisualElement _buttonsWrapper;
-    private Button _tutorialButton;
-    private Button _levelsButton;
-    private Button _settingsButton;
-    private Button _exitButton;
+    private Button _SpelenButton;
+    private Button _UitlegButton;
+    private Button _GeluidButton;
 
-    private VisualElement _levelsPanel;
-    private List<Button> _levelsPanelButtons = new List<Button>();
+    private VisualElement _UitlegPanel;
+    private List<Button> _UitlegPanelButtons = new List<Button>();
 
-    private VisualElement _settingsPanel;
-    private List<Button> _settingsPanelButtons = new List<Button>();
+    private VisualElement _GeluidPanel;
+    private List<Button> _GeluidPanelButtons = new List<Button>();
 
     private Slider _volumeSlider;
     public AudioSource BackGroundMusic;
@@ -29,34 +28,27 @@ public class MenuController : MonoBehaviour
         var root = GetComponent<UIDocument>().rootVisualElement;
 
         _buttonsWrapper = root.Q<VisualElement>("Buttons");
-        _tutorialButton = root.Q<Button>("TutorialButton");
-        _settingsButton = root.Q<Button>("SettingsButton");
-        _levelsButton = root.Q<Button>("LevelsButton");
-        _exitButton = root.Q<Button>("ExitButton");
+        _SpelenButton = root.Q<Button>("SpelenButton");
+        _GeluidButton = root.Q<Button>("GeluidButton");
+        _UitlegButton = root.Q<Button>("UitlegButton");
 
-        _tutorialButton.clicked += TutorialButtonClicked;
-        _levelsButton.clicked += LevelsButtonClicked;
-        _settingsButton.clicked += SettingsButtonClicked;
-        _exitButton.clicked += ExitButtonClicked;
+        _SpelenButton.clicked += SpelenButtonClicked;
+        _UitlegButton.clicked += UitlegButtonClicked;
+        _GeluidButton.clicked += GeluidButtonClicked;
 
-        _levelsPanel = _levelsButtonTemplate.CloneTree().Q<VisualElement>("Wrapper");
-        _levelsPanel.style.display = DisplayStyle.None;
-        _buttonsWrapper.Add(_levelsPanel);
+        _UitlegPanel = _UitlegButtonTemplate.CloneTree().Q<VisualElement>("Wrapper");
+        _UitlegPanel.style.display = DisplayStyle.None;
+        _buttonsWrapper.Add(_UitlegPanel);
 
-        AddPanelButton(_levelsPanel, _levelsPanelButtons, "LevelBackButton", LevelsBackButtonClicked);
-        AddPanelButton(_levelsPanel, _levelsPanelButtons, "Level1", Level1ButtonClicked);
-        AddPanelButton(_levelsPanel, _levelsPanelButtons, "Level2", Level2ButtonClicked);
-        AddPanelButton(_levelsPanel, _levelsPanelButtons, "Level3", Level3ButtonClicked);
-        AddPanelButton(_levelsPanel, _levelsPanelButtons, "Level4", Level4ButtonClicked);
-        AddPanelButton(_levelsPanel, _levelsPanelButtons, "Level5", Level5ButtonClicked);
+        AddPanelButton(_UitlegPanel, _UitlegPanelButtons, "UitlegBackButton", UitlegBackButtonClicked);
 
-        _settingsPanel = _settingsPanelTemplate.CloneTree().Q<VisualElement>("Wrapper");
-        _settingsPanel.style.display = DisplayStyle.None;
-        _buttonsWrapper.Add(_settingsPanel);
+        _GeluidPanel = _GeluidPanelTemplate.CloneTree().Q<VisualElement>("Wrapper");
+        _GeluidPanel.style.display = DisplayStyle.None;
+        _buttonsWrapper.Add(_GeluidPanel);
 
-        AddPanelButton(_settingsPanel, _settingsPanelButtons, "SettingsBackButton", SettingsBackButtonClicked);
+        AddPanelButton(_GeluidPanel, _GeluidPanelButtons, "GeluidBackButton", GeluidBackButtonClicked);
 
-        _volumeSlider = _settingsPanel.Q<Slider>("VolumeSlider");
+        _volumeSlider = _GeluidPanel.Q<Slider>("VolumeSlider");
 
         if (_volumeSlider != null)
         {
@@ -102,10 +94,9 @@ public class MenuController : MonoBehaviour
 
     private void ShowPanel(VisualElement panel, List<Button> buttons)
     {
-        _tutorialButton.style.display = DisplayStyle.None;
-        _levelsButton.style.display = DisplayStyle.None;
-        _settingsButton.style.display = DisplayStyle.None;
-        _exitButton.style.display = DisplayStyle.None;
+        _SpelenButton.style.display = DisplayStyle.None;
+        _UitlegButton.style.display = DisplayStyle.None;
+        _GeluidButton.style.display = DisplayStyle.None;
 
         panel.style.display = DisplayStyle.Flex;
 
@@ -120,24 +111,15 @@ public class MenuController : MonoBehaviour
         foreach (var b in buttons)
             b.style.display = DisplayStyle.None;
 
-        _tutorialButton.style.display = DisplayStyle.Flex;
-        _levelsButton.style.display = DisplayStyle.Flex;
-        _settingsButton.style.display = DisplayStyle.Flex;
-        _exitButton.style.display = DisplayStyle.Flex;
+        _SpelenButton.style.display = DisplayStyle.Flex;
+        _UitlegButton.style.display = DisplayStyle.Flex;
+        _GeluidButton.style.display = DisplayStyle.Flex;
     }
 
-    private void TutorialButtonClicked() => SceneManager.LoadScene("Tutorial");
-    private void LevelsButtonClicked() => ShowPanel(_levelsPanel, _levelsPanelButtons);
-    private void SettingsButtonClicked() => ShowPanel(_settingsPanel, _settingsPanelButtons);
+    private void SpelenButtonClicked() => SceneManager.LoadScene("MainGame");
+    private void UitlegButtonClicked() => ShowPanel(_UitlegPanel, _UitlegPanelButtons);
+    private void GeluidButtonClicked() => ShowPanel(_GeluidPanel, _GeluidPanelButtons);
 
-    private void LevelsBackButtonClicked() => HidePanel(_levelsPanel, _levelsPanelButtons);
-    private void SettingsBackButtonClicked() => HidePanel(_settingsPanel, _settingsPanelButtons);
-
-    private void Level1ButtonClicked() => SceneManager.LoadScene("Level 1");
-    private void Level2ButtonClicked() => SceneManager.LoadScene("Level 2");
-    private void Level3ButtonClicked() => SceneManager.LoadScene("Level 3");
-    private void Level4ButtonClicked() => SceneManager.LoadScene("Level 4");
-    private void Level5ButtonClicked() => SceneManager.LoadScene("Level 5");
-
-    private void ExitButtonClicked() => Application.Quit();
+    private void UitlegBackButtonClicked() => HidePanel(_UitlegPanel, _UitlegPanelButtons);
+    private void GeluidBackButtonClicked() => HidePanel(_GeluidPanel, _GeluidPanelButtons);
 }

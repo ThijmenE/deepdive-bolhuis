@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement style="flex-grow: 1;">
-        <ui:Label text="0:00" name="timer-label" style="align-self: center; justify-content: center; align-content: auto; align-items: auto; position: absolute; bottom: auto; right: auto; font-size: 150px; -unity-font-definition: url(&quot;project://database/Assets/Thijmen/UI/Font/Materials/ThaleahFat_TTF.ttf?fileID=12800000&amp;guid=585188cdc4600544eb408bee749e4b3a&amp;type=3#ThaleahFat_TTF&quot;); -unity-text-align: middle-center; top: 500px; left: auto;" />
+        <ui:Label text="0:00" name="boom-timer" style="align-self: center; justify-content: center; align-content: auto; align-items: auto; position: absolute; bottom: auto; right: auto; font-size: 150px; -unity-font-definition: url(&quot;project://database/Assets/Thijmen/UI/Font/Materials/ThaleahFat_TTF.ttf?fileID=12800000&amp;guid=585188cdc4600544eb408bee749e4b3a&amp;type=3#ThaleahFat_TTF&quot;); -unity-text-align: middle-center; top: 500px; left: auto;" />
     </ui:VisualElement>
 </ui:UXML>
