@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -63,14 +64,6 @@ public class GameManager : MonoBehaviour
             if (_ButtonCheck != null)
                 _ButtonCheck.clicked += ButtonCheckClicked;
 
-            _ButtonCheck = root.Q<Button>("ButtonCheck2");
-            if (_ButtonCheck != null)
-                _ButtonCheck.clicked += ButtonCheck2Clicked;
-
-            _ButtonCheck = root.Q<Button>("ButtonCheck3");
-            if (_ButtonCheck != null)
-                _ButtonCheck.clicked += ButtonCheck3Clicked;
-
             _ButtonPlanted = root.Q<Button>("ButtonPlanted");
             if (_ButtonPlanted != null)
                 _ButtonPlanted.clicked += ButtonPlantClicked;
@@ -90,6 +83,13 @@ public class GameManager : MonoBehaviour
             SchepButton.clicked += OnSchepButtonClicked;
 
         Schep += OnSchepChanged;
+
+    }
+
+    private void Start()
+    {
+        _ButtonCheck.SetEnabled(false);
+        _ButtonPlanted.SetEnabled(false);
     }
 
     private void OnEnable()
@@ -188,7 +188,8 @@ public class GameManager : MonoBehaviour
         OnMuntenAdd?.Invoke(muntenValue);
 
         animator.SetTrigger("Sold");
-        Debug.Log("Werkt wel");
+        _ButtonCheck.SetEnabled(false);
+        _ButtonPlanted.SetEnabled(true);
     }
 
     public void ButtonCheck2Clicked()
@@ -215,6 +216,7 @@ public class GameManager : MonoBehaviour
     {
         animator.SetTrigger("Planted");
         elapsedTime = 0f;
+        _ButtonPlanted.SetEnabled(false);
     }
 
     public void ButtonPlant2Clicked()
@@ -252,7 +254,11 @@ public class GameManager : MonoBehaviour
         if (elapsedTime < 20f)
         {
             elapsedTime += Time.deltaTime * totalSpeed;
-            if (elapsedTime > 20f) elapsedTime = 20f;
+        }
+        if (elapsedTime > 20f)
+        {
+            elapsedTime = 20f;
+            _ButtonCheck.SetEnabled(true);
         }
 
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
