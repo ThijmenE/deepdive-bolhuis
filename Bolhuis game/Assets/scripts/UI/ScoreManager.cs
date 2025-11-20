@@ -182,6 +182,8 @@ public class GameManager : MonoBehaviour
 
     public void ButtonCheckClicked()
     {
+        if (elapsedTime < 20f) return;
+
         OnScoreAdd?.Invoke(scoreValue);
         OnMuntenAdd?.Invoke(muntenValue);
 
@@ -190,6 +192,8 @@ public class GameManager : MonoBehaviour
 
     public void ButtonCheck2Clicked()
     {
+        if (elapsedTime < 20f) return;
+
         OnScoreAdd?.Invoke(scoreValue);
         OnMuntenAdd?.Invoke(muntenValue);
 
@@ -198,6 +202,8 @@ public class GameManager : MonoBehaviour
 
     public void ButtonCheck3Clicked()
     {
+        if (elapsedTime < 20f) return;
+
         OnScoreAdd?.Invoke(scoreValue);
         OnMuntenAdd?.Invoke(muntenValue);
 
@@ -207,16 +213,19 @@ public class GameManager : MonoBehaviour
     public void ButtonPlantClicked()
     {
         animator.SetTrigger("Planted");
+        elapsedTime = 0f;
     }
 
     public void ButtonPlant2Clicked()
     {
         animator.SetTrigger("Planted");
+        elapsedTime = 0f;
     }
 
     public void ButtonPlant3Clicked()
     {
         animator.SetTrigger("Planted");
+        elapsedTime = 0f;
     }
 
     private void UpdateScoreLabel()
@@ -234,8 +243,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         float gieterSpeed = isGieterActive ? 1.5f : 1f;
-        float mestSpeed   = isMestActive ? 1.2f : 1f;
-        float schepSpeed  = isSchepActive ? 1.3f : 1f;
+        float mestSpeed = isMestActive ? 1.2f : 1f;
+        float schepSpeed = isSchepActive ? 1.3f : 1f;
 
         float totalSpeed = gieterSpeed + mestSpeed + schepSpeed - 2f;
 
