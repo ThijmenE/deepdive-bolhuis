@@ -9,20 +9,29 @@ public class GameManager : MonoBehaviour
     private Label timerLabel;
     private Button gieterButton;
     private Button mestButton;
+    private Button SchepButton;
 
     private float score = 0f;
-    private float munten = 75f;
-    private float mest = 10;
-    [SerializeField] private float gieterWaarde = 75f;
+    private float munten = 750f;
+    [SerializeField] private float mest = 10;
+    [SerializeField] private float Gieter = 75f;
+    [SerializeField] private float schep = 50f;
 
     private float elapsedTime = 0f;
     public Animator animator;
-    private bool isGieterActive = false;
 
-    public float OnMestChanged { get; private set; }
+    private bool isGieterActive = false;
+    private bool isMestActive = false;
+    private bool isSchepActive = false;
 
     public static event Action<bool> gieter;
     public static void SetGieter(bool value) => gieter?.Invoke(value);
+
+    public static event Action<bool> Mest;
+    public static void SetMest(bool value) => Mest?.Invoke(value);
+
+    public static event Action<bool> Schep;
+    public static void SetSchep(bool value) => Schep?.Invoke(value);
 
     private void Awake()
     {
@@ -38,25 +47,23 @@ public class GameManager : MonoBehaviour
             timerLabel = root.Q<Label>("boom-timer");
             gieterButton = root.Q<Button>("GieterButton");
             mestButton = root.Q<Button>("MestButton");
-        }
-        else
-        {
-            Debug.LogWarning("No UIDocument found in scene.");
+            SchepButton = root.Q<Button>("SchepButton");
         }
 
         if (gieterButton != null)
             gieterButton.clicked += OnGieterButtonClicked;
-        else
-            Debug.LogWarning("GieterButton not found in UIDocument.");
 
         gieter += OnGieterChanged;
 
         if (mestButton != null)
             mestButton.clicked += OnMestButtonClicked;
-        else
-            Debug.LogWarning("GieterButton not found in UIDocument.");
 
-       mest += OnMestChanged;
+        Mest += OnMestChanged;
+
+        if (SchepButton != null)
+            SchepButton.clicked += OnSchepButtonClicked;
+
+        Schep += OnSchepChanged;
     }
 
     private void Start()
@@ -83,7 +90,18 @@ public class GameManager : MonoBehaviour
             gieterButton.clicked -= OnGieterButtonClicked;
 
         gieter -= OnGieterChanged;
+
+        if (mestButton != null)
+            mestButton.clicked -= OnMestButtonClicked;
+
+        Mest -= OnMestChanged;
+
+        if (SchepButton != null)
+            SchepButton.clicked -= OnSchepButtonClicked;
+
+        Schep -= OnSchepChanged;
     }
+
     private void OnScoreAdded(float value)
     {
         score += value;
@@ -100,34 +118,56 @@ public class GameManager : MonoBehaviour
     {
         isGieterActive = state;
     }
+
+    private void OnMestChanged(bool state)
+    {
+        isMestActive = state;
+    }
+
+    private void OnSchepChanged(bool state)
+    {
+        isSchepActive = state;
+    }
+
     private void OnGieterButtonClicked()
     {
-        if (munten >= gieterWaarde)
+        if (isGieterActive) return;
+
+        if (munten >= Gieter)
         {
-            munten -= gieterWaarde;
+            munten -= Gieter;
             UpdateMuntenLabel();
             SetGieter(true);
 
-            Debug.Log("Gieter is gekocht!");
-        }
-        else
-        {
-            Debug.Log("Niet genoeg munten in de tas! sukkel");
+            gieterButton.SetEnabled(false);
         }
     }
 
-        private void OnMestButtonClicked()
+    private void OnMestButtonClicked()
     {
+        if (isMestActive) return;
+
         if (munten >= mest)
         {
             munten -= mest;
             UpdateMuntenLabel();
+            SetMest(true);
 
-            Debug.Log("Mest is gekocht!");
+            mestButton.SetEnabled(false);
         }
-        else
+    }
+
+    private void OnSchepButtonClicked()
+    {
+        if (isSchepActive) return;
+
+        if (munten >= schep)
         {
-            Debug.Log("Niet genoeg munten in de tas! sukkel");
+            munten -= schep;
+            UpdateMuntenLabel();
+            SetSchep(true);
+
+            SchepButton.SetEnabled(false);
         }
     }
 
@@ -145,12 +185,16 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        float speed = isGieterActive ? 1.5f : 1f;
+        float gieterSpeed = isGieterActive ? 1.5f : 1f;
+        float mestSpeed   = isMestActive ? 1.2f : 1f;
+        float schepSpeed  = isSchepActive ? 1.3f : 1f;
 
-        if (elapsedTime < 30f)
+        float totalSpeed = gieterSpeed + mestSpeed + schepSpeed - 2f;
+
+        if (elapsedTime < 20f)
         {
-            elapsedTime += Time.deltaTime * speed;
-            if (elapsedTime > 30f) elapsedTime = 30f;
+            elapsedTime += Time.deltaTime * totalSpeed;
+            if (elapsedTime > 20f) elapsedTime = 20f;
         }
 
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
@@ -161,10 +205,5 @@ public class GameManager : MonoBehaviour
 
         if (animator != null)
             animator.SetFloat("Timer", elapsedTime);
-    }
-
-    public void ToggleGieter(bool value)
-    {
-        SetGieter(value);
     }
 }
