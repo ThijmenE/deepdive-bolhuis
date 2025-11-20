@@ -188,6 +188,7 @@ public class GameManager : MonoBehaviour
         OnMuntenAdd?.Invoke(muntenValue);
 
         animator.SetTrigger("Sold");
+        Debug.Log("Werkt wel");
     }
 
     public void ButtonCheck2Clicked()
