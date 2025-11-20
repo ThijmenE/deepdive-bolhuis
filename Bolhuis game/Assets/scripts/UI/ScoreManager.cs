@@ -192,43 +192,11 @@ public class GameManager : MonoBehaviour
         _ButtonPlanted.SetEnabled(true);
     }
 
-    public void ButtonCheck2Clicked()
-    {
-        if (elapsedTime < 20f) return;
-
-        OnScoreAdd?.Invoke(scoreValue);
-        OnMuntenAdd?.Invoke(muntenValue);
-
-        animator.SetTrigger("Sold");
-    }
-
-    public void ButtonCheck3Clicked()
-    {
-        if (elapsedTime < 20f) return;
-
-        OnScoreAdd?.Invoke(scoreValue);
-        OnMuntenAdd?.Invoke(muntenValue);
-
-        animator.SetTrigger("Sold");
-    }
-
     public void ButtonPlantClicked()
     {
         animator.SetTrigger("Planted");
         elapsedTime = 0f;
         _ButtonPlanted.SetEnabled(false);
-    }
-
-    public void ButtonPlant2Clicked()
-    {
-        animator.SetTrigger("Planted");
-        elapsedTime = 0f;
-    }
-
-    public void ButtonPlant3Clicked()
-    {
-        animator.SetTrigger("Planted");
-        elapsedTime = 0f;
     }
 
     private void UpdateScoreLabel()
