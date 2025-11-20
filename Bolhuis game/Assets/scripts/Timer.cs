@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Timer : MonoBehaviour
@@ -29,6 +30,7 @@ public class Timer : MonoBehaviour
         {
             remainingTime = 0;
             timerLabel.style.color = Color.red;
+            SceneManager.LoadScene("WinScene");
         }
 
         int minutes = Mathf.FloorToInt(remainingTime / 60);

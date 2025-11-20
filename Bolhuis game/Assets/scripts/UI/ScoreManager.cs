@@ -33,6 +33,15 @@ public class GameManager : MonoBehaviour
     public static event Action<bool> Schep;
     public static void SetSchep(bool value) => Schep?.Invoke(value);
 
+    public static event Action<float> OnScoreAdd;
+    public static event Action<float> OnMuntenAdd;
+
+    [SerializeField] private float scoreValue = 100;
+    [SerializeField] private float muntenValue = 25;
+
+    private Button _ButtonCheck;
+    private Button _ButtonPlanted;
+
     private void Awake()
     {
         UIDocument uiDocument = GetComponent<UIDocument>();
@@ -42,12 +51,29 @@ public class GameManager : MonoBehaviour
         if (uiDocument != null)
         {
             var root = uiDocument.rootVisualElement;
+
             scoreLabel = root.Q<Label>("ScoreLabel");
             muntenLabel = root.Q<Label>("MuntenLabel");
             timerLabel = root.Q<Label>("boom-timer");
             gieterButton = root.Q<Button>("GieterButton");
             mestButton = root.Q<Button>("MestButton");
             SchepButton = root.Q<Button>("SchepButton");
+
+            _ButtonCheck = root.Q<Button>("ButtonCheck");
+            if (_ButtonCheck != null)
+                _ButtonCheck.clicked += ButtonCheckClicked;
+
+            _ButtonCheck = root.Q<Button>("ButtonCheck2");
+            if (_ButtonCheck != null)
+                _ButtonCheck.clicked += ButtonCheck2Clicked;
+
+            _ButtonCheck = root.Q<Button>("ButtonCheck3");
+            if (_ButtonCheck != null)
+                _ButtonCheck.clicked += ButtonCheck3Clicked;
+
+            _ButtonPlanted = root.Q<Button>("ButtonPlanted");
+            if (_ButtonPlanted != null)
+                _ButtonPlanted.clicked += ButtonPlantClicked;
         }
 
         if (gieterButton != null)
@@ -66,22 +92,16 @@ public class GameManager : MonoBehaviour
         Schep += OnSchepChanged;
     }
 
-    private void Start()
-    {
-        UpdateScoreLabel();
-        UpdateMuntenLabel();
-    }
-
     private void OnEnable()
     {
-        Boom.OnScoreAdd += OnScoreAdded;
-        Boom.OnMuntenAdd += OnMuntenAdded;
+        OnScoreAdd += OnScoreAdded;
+        OnMuntenAdd += OnMuntenAdded;
     }
 
     private void OnDisable()
     {
-        Boom.OnScoreAdd -= OnScoreAdded;
-        Boom.OnMuntenAdd -= OnMuntenAdded;
+        OnScoreAdd -= OnScoreAdded;
+        OnMuntenAdd -= OnMuntenAdded;
     }
 
     private void OnDestroy()
@@ -114,20 +134,9 @@ public class GameManager : MonoBehaviour
         UpdateMuntenLabel();
     }
 
-    private void OnGieterChanged(bool state)
-    {
-        isGieterActive = state;
-    }
-
-    private void OnMestChanged(bool state)
-    {
-        isMestActive = state;
-    }
-
-    private void OnSchepChanged(bool state)
-    {
-        isSchepActive = state;
-    }
+    private void OnGieterChanged(bool state) => isGieterActive = state;
+    private void OnMestChanged(bool state) => isMestActive = state;
+    private void OnSchepChanged(bool state) => isSchepActive = state;
 
     private void OnGieterButtonClicked()
     {
@@ -169,6 +178,45 @@ public class GameManager : MonoBehaviour
 
             SchepButton.SetEnabled(false);
         }
+    }
+
+    public void ButtonCheckClicked()
+    {
+        OnScoreAdd?.Invoke(scoreValue);
+        OnMuntenAdd?.Invoke(muntenValue);
+
+        animator.SetTrigger("Sold");
+    }
+
+    public void ButtonCheck2Clicked()
+    {
+        OnScoreAdd?.Invoke(scoreValue);
+        OnMuntenAdd?.Invoke(muntenValue);
+
+        animator.SetTrigger("Sold");
+    }
+
+    public void ButtonCheck3Clicked()
+    {
+        OnScoreAdd?.Invoke(scoreValue);
+        OnMuntenAdd?.Invoke(muntenValue);
+
+        animator.SetTrigger("Sold");
+    }
+
+    public void ButtonPlantClicked()
+    {
+        animator.SetTrigger("Planted");
+    }
+
+    public void ButtonPlant2Clicked()
+    {
+        animator.SetTrigger("Planted");
+    }
+
+    public void ButtonPlant3Clicked()
+    {
+        animator.SetTrigger("Planted");
     }
 
     private void UpdateScoreLabel()

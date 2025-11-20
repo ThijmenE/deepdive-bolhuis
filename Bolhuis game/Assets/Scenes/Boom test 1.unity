@@ -169,9 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33249dc4db5d4f544a8de4455ecc94c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
-  mest: 10
-  Gieter: 75
-  schep: 50
+  boostMest: 10
+  boostGieter: 75
+  boostSchep: 50
   animator: {fileID: 0}
 --- !u!114 &771972204
 MonoBehaviour:
@@ -264,9 +264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33249dc4db5d4f544a8de4455ecc94c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombinedGameManager
-  mest: 10
-  Gieter: 75
-  schep: 50
+  boostMest: 10
+  boostGieter: 75
+  boostSchep: 50
   animator: {fileID: 72366133}
 --- !u!1 &914070282
 GameObject:
@@ -310,12 +310,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 914070282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f890d981091167a4fa75a459533ddab4, type: 3}
+  m_Script: {fileID: 11500000, guid: 33249dc4db5d4f544a8de4455ecc94c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boom
-  animator: {fileID: 72366133}
-  scoreValue: 100
-  muntenValue: 25
+  boostMest: 10
+  boostGieter: 75
+  boostSchep: 50
+  animator: {fileID: 0}
 --- !u!114 &914070285
 MonoBehaviour:
   m_ObjectHideFlags: 0
